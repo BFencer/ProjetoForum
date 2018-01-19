@@ -12539,11 +12539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\33359624866\\Desktop\\backend\\Forum\\Forum.csproj",
+      "projectUniqueName": "c:\\Users\\33359624866\\Desktop\\backend\\Forum\\Forum.csproj",
       "projectName": "Forum",
-      "projectPath": "C:\\Users\\33359624866\\Desktop\\backend\\Forum\\Forum.csproj",
+      "projectPath": "c:\\Users\\33359624866\\Desktop\\backend\\Forum\\Forum.csproj",
       "packagesPath": "C:\\Users\\33359624866\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\33359624866\\Desktop\\backend\\Forum\\obj\\",
+      "outputPath": "c:\\Users\\33359624866\\Desktop\\backend\\Forum\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

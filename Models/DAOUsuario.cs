@@ -13,9 +13,9 @@ namespace Forum.Models
         SqlCommand cmd = null;
         SqlDataReader dtReader = null;
         StringBuilder sbSQL = new StringBuilder();
-        string conexao = @"Data Source =.\SqlExpress;Initial Catalog=projetocidades;user id = sa; pwd=senai@123";
+        string conexao = @"Data Source =.\SqlExpress;Initial Catalog=Forum;user id = sa; pwd=senai@123";
 
-        public List<Usuario> ListarUsuarios()
+        public List<Usuario> Listar()
         {
             var Usuarios = new List<Usuario>();
             try
@@ -58,6 +58,56 @@ namespace Forum.Models
             return Usuarios;
         }
 
-        
+        public bool Cadastrar(Usuario user)
+        {
+            bool resultado = false;
+            try
+            {
+
+                cn = new SqlConnection();
+                cn.ConnectionString = conexao;
+                cn.Open();
+
+                cmd = new SqlCommand();
+                cmd.Connection = cn;
+                sbSQL.Remove(0, sbSQL.Length);
+                sbSQL.Append("insert into Usuario(   ");
+                sbSQL.Append("nome,                  ");
+                sbSQL.Append("login,                 ");
+                sbSQL.Append("senha)                 ");
+                sbSQL.Append("values                 ");
+                sbSQL.Append("(@nome,                ");
+                sbSQL.Append("@login,                ");
+                sbSQL.Append("@senha)                ");
+                cmd.CommandText = sbSQL.ToString();
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@nome",user.Nome);
+                cmd.Parameters.AddWithValue("@login",user.Login);
+                cmd.Parameters.AddWithValue("@senha",user.Senha);
+                
+                if(cmd.ExecuteNonQuery() > 0)
+                {
+                    resultado = true;
+                }else{
+                    resultado = false;
+                }
+
+            }
+            catch(SqlException se)
+            {
+                throw new Exception(se.Message);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+            
+            return resultado;
+        }
+
     }
 }
